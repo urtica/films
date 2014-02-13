@@ -1,0 +1,9 @@
+<h1><%= @film.name %></h1>
+<%= form_tag url_for(action: "add_tag", film_id: @film.id) do %>
+<span>год выхода: </span><%= @film.year %><br/>
+<span>рейтинг: </span><%= "+#{@film.rating}" %><br/>
+<span>теги: </span><%= @film.tags.map(&:name).join(", ")%><br/>
+<span>тег: </span><%= text_field_tag :name %>
+<%= submit_tag "ОК"%>
+<%= link_to "Back", films_path %>
+<% end %>

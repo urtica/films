@@ -1,0 +1,17 @@
+<h1>Films</h1>
+<%= link_to "Создать фильм", new_film_path %>
+<br/>
+<%= link_to "Все фильмы" %>
+<% Film::RATINGS.each do |r| %>
+<%= link_to  "+#{r}", rating: r %>
+<% end %>
+<table id="filmz">
+<tr><th><%= sortable @films.column_names[1], nil, rating: params[:rating] %></th><th><%= sortable @films.column_names[2], nil, rating: params[:rating] %></th><th><%= sortable @films.column_names[5], nil, rating: params[:rating]  %></th><th>Tag</th><th>Правка</th></tr>
+<% @films.each_with_index do |a,index| %>
+<% if index%2==0 %>
+<tr class="alt"><td><%= link_to a.name, a %></td><td><%= a.year %></td><td><%= "+#{a.rating}" %></td><td><%= a.tags.map(&:name).join(", ") %></td><td><%= link_to "Редактировать", edit_film_path(a) %></td></tr>
+<% else %>
+<tr><td><%= link_to a.name, a %></td><td><%= a.year %></td><td><%= "+#{a.rating}" %></td><td><%= a.tags.map(&:name).join(", ") %></td><td><%= link_to "Редактировать", edit_film_path(a) %></td></tr>
+<% end %>
+<% end %>
+</table>

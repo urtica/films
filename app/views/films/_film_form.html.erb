@@ -1,0 +1,7 @@
+<%= form_for @film do |f|%>
+<div>Фильм: <%= f.text_field :name  %><br/>
+<%= @film.errors[:name]  %><br/>
+Год выпуска: <%= f.text_field :year %><br/>
+Рейтинг: <%= f.select :rating, Film::RATINGS %><br/></div>
+<%= f.submit "Сохранить"%>
+<% end %>
