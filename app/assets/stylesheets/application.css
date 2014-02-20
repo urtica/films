@@ -23,6 +23,7 @@ h1
 text-align: center;
 background-color:#f7C942;
 }
+
 table,th,td
 {
 font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -47,6 +48,12 @@ padding-bottom:4px;
 background-color:#f7C942;
 color:#ffffff;
 }
+#filmz th a
+{
+border-bottom: 1px dotted;
+text-decoration: none;
+color:#ffffff;
+}
 #filmz tr.alt td 
 {
 color:#000000;
@@ -59,4 +66,8 @@ font-size:1.5em;
 span
 {
 font-size:1.5em;
+}
+div.field_with_errors input 
+{
+	background-color:#ff0000;
 }

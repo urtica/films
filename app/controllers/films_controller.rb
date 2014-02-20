@@ -17,9 +17,10 @@ class FilmsController < ApplicationController
 	def new
 		@film=Film.new
 	end
+    
 	def create
 		@film=Film.create(params[:film])
-		if @film.valid?
+		if @film.valid? 
 		    redirect_to action: "index"
 		else
  			render action: "new"
@@ -31,7 +32,12 @@ class FilmsController < ApplicationController
 	def update
 		@film=Film.where(id: params[:id]).first
 		@film.update_attributes params[:film]
-		redirect_to action: "show", id: @film.id
+		if @film.valid?
+		    redirect_to action: "show", id: @film.id
+		else
+ 			render action: "edit"
+		end	
+		
 	end
 	
 	def sort_column
@@ -40,7 +46,15 @@ class FilmsController < ApplicationController
 	def add_tag
 		@film=Film.where(id: params[:film_id]).first
 		@film.tags<<Tag.by_name(params[:name])
+
 		@film.save
 		redirect_to film_path(@film)
+	end
+
+	def destroy
+  		@f = Film.find(params[:id])
+  		@f.destroy
+ 
+  		redirect_to films_path
 	end
 end

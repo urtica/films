@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140212070008) do
+ActiveRecord::Schema.define(:version => 20140219105349) do
 
   create_table "films", :force => true do |t|
     t.string   "name"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20140212070008) do
     t.integer  "rating"
   end
 
-  create_table "films_tags", :id => false, :force => true do |t|
+  create_table "films_tags", :force => true do |t|
     t.integer "film_id"
     t.integer "tag_id"
   end
