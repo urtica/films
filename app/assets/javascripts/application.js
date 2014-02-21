@@ -13,3 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+function f1()
+{
+	if ($('#name').val()!="")
+	{
+		$.ajax({url: "test_ajax",type: "POST", data: {tag: $('#name').val(), id: $('#film_id').val()}});
+	}
+
+}

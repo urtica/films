@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140219105349) do
+ActiveRecord::Schema.define(:version => 20140220063200) do
 
   create_table "films", :force => true do |t|
     t.string   "name"

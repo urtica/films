@@ -1,7 +1,8 @@
 Films::Application.routes.draw do
+  match 'films/test_ajax'=>'films#test_ajax'
+
   resources :films do
     post 'add_tag'
-    
   end
 
   resources :tags 

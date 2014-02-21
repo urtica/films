@@ -13,6 +13,7 @@ class FilmsController < ApplicationController
 	end
 	def show
 		@film=Film.where(id: params[:id]).first
+		
 	end
 	def new
 		@film=Film.new
@@ -45,10 +46,14 @@ class FilmsController < ApplicationController
 	end
 	def add_tag
 		@film=Film.where(id: params[:film_id]).first
-		@film.tags<<Tag.by_name(params[:name])
-
-		@film.save
-		redirect_to film_path(@film)
+		
+		#puts film_path(@film)
+		if @film.add_tag(params[:name])
+			@film.save
+			redirect_to film_path(@film)
+		else
+			render action: "show"
+		end
 	end
 
 	def destroy
@@ -56,5 +61,14 @@ class FilmsController < ApplicationController
   		@f.destroy
  
   		redirect_to films_path
+	end
+
+	def test_ajax
+	    film=Film.find(params[:id])
+	    if film.tags.map(&:name).include?(params[:tag])
+	  	     render :text=>'false'
+	  	else
+	  		 render :text=> {}.to_json
+	    end
 	end
 end
