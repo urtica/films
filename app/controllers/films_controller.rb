@@ -59,8 +59,8 @@ class FilmsController < ApplicationController
 	def destroy
   		@f = Film.find(params[:id])
   		@f.destroy
- 
-  		redirect_to films_path
+ 		render text: "_OK_"
+  		#redirect_to films_path
 	end
 
 	def test_ajax
@@ -68,7 +68,17 @@ class FilmsController < ApplicationController
 	    if film.tags.map(&:name).include?(params[:tag])
 	  	     render :text=>'false'
 	  	else
-	  		 render :text=> {}.to_json
+	  		 render :text=> 'true'
 	    end
+	end
+
+	def test_add_tag
+		film=Film.find(params[:id])
+		if film.add_tag(params[:tag])
+			film.save
+			render :text=>{error: film.errors}.to_json
+		else
+			render :text=>{error: film.errors}.to_json
+		end
 	end
 end

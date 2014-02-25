@@ -3,12 +3,10 @@
 <%= text_field_tag "film_id", @film.id, style: "display: none;" %>
 <span>год выхода: </span><%= @film.year %><br/>
 <span>рейтинг: </span><%= "+#{@film.rating}" %><br/>
-<span>теги: </span><%= @film.tags.map(&:name).join(", ")%><br/>
+<span>теги: </span><span id="taglist", class="taglist"><%= @film.tags.map(&:name).join(", ")%></span><br/>
 <span>тег: </span><%= text_field_tag :name %><br/>
-<% unless @film.errors.messages.empty? %>
-<%= "Tag message #{@film.errors.messages.values.join("")}" %><br/>
-<% end %>
-<%= submit_tag "ОК"%>
+<span id="error" style="display: none;"></span><br/>
+<button id="ОК" onclick="f2(); return false;" >OK</button>
 <button id="button" onclick="f1(); return false;" >click</button>
 <%= link_to "Back", films_path %>
 <% end %>

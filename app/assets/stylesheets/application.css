@@ -71,3 +71,7 @@ div.field_with_errors input
 {
 	background-color:#ff0000;
 }
+span.taglist 
+{
+	font-size: 1em;
+}

@@ -10,7 +10,6 @@
 <tr><th><%= sortable @films.column_names[1], nil, rating: params[:rating] %></th><th><%= sortable @films.column_names[2], nil, rating: params[:rating] %></th><th><%= sortable @films.column_names[5], nil, rating: params[:rating]  %></th><th>Tag</th><th>Правка</th><th>Удаление</th></tr>
 <% @films.each_with_index do |a,index| %>
 
-<tr <% if index%2==0 %>class="alt"<%end%>><td><%= link_to a.name, a %></td><td><%= a.year %></td><td><%= "+#{a.rating}" %></td><td><%= a.tags.map(&:name).join(", ") %></td><td><%= link_to "Редактировать", edit_film_path(a) %></td><td><%= link_to 'Удалить', film_path(a),
-                    method: :delete, data: { confirm: 'Вы уверены?' } %></td></tr>
+<tr <% if index%2==0 %>class="alt"<%end%>><td><%= link_to a.name, a %></td><td><%= a.year %></td><td><%= "+#{a.rating}" %></td><td><%= a.tags.map(&:name).join(", ") %></td><td><%= link_to "Редактировать", edit_film_path(a) %></td><td><%= link_to 'Удалить', "#", class: "remove_film", data: { film_id: a.id } %></td></tr>
 <% end %>
 </table>
